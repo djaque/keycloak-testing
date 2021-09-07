@@ -6,12 +6,12 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/djaque/compose-keycloak/rest-sample/pkg/storage/inmem"
+	"github.com/djaque/keycloak-testing/rest-sample/pkg/storage/inmem"
 
-	sample "github.com/djaque/compose-keycloak/rest-sample/cmd/sample-data"
-	gopher "github.com/djaque/compose-keycloak/rest-sample/pkg"
+	sample "github.com/djaque/keycloak-testing/rest-sample/cmd/sample-data"
+	gopher "github.com/djaque/keycloak-testing/rest-sample/pkg"
 
-	"github.com/djaque/compose-keycloak/rest-sample/pkg/server"
+	"github.com/djaque/keycloak-testing/rest-sample/pkg/server"
 )
 
 func main() {

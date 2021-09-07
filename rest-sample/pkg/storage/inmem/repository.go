@@ -5,7 +5,7 @@ import (
 	"strings"
 	"sync"
 
-	gopher "github.com/djaque/compose-keycloak/rest-sample/pkg"
+	gopher "github.com/djaque/keycloak-testing/rest-sample/pkg"
 )
 
 type gopherRepository struct {

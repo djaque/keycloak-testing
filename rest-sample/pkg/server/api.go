@@ -2,12 +2,11 @@ package server
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
-	gopher "github.com/djaque/compose-keycloak/rest-sample/pkg"
-
+	gopher "github.com/djaque/keycloak-testing/rest-sample/pkg"
 	"github.com/gorilla/mux"
+	log "github.com/sirupsen/logrus"
 )
 
 type api struct {
@@ -36,6 +35,7 @@ func (a *api) Router() http.Handler {
 }
 
 func (a *api) fetchGophers(w http.ResponseWriter, r *http.Request) {
+	log.Println("get all gophers")
 	gophers, _ := a.repository.FetchGophers()
 
 	w.Header().Set("Content-Type", "application/json")
@@ -43,17 +43,19 @@ func (a *api) fetchGophers(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *api) fetchGopher(w http.ResponseWriter, r *http.Request) {
+	log.Info("Search for one gopher")
 	vars := mux.Vars(r)
-	fmt.Printf("Gopher search for %s \n", vars["ID"])
+	log.Printf("Gopher search for %s", vars["ID"])
 	gopher, err := a.repository.FetchGopherByName(vars["ID"])
 	w.Header().Set("Content-Type", "application/json")
 	if err != nil {
+		log.Printf("Gopher %s not found\n", vars["ID"])
 		w.WriteHeader(http.StatusNotFound) // We use not found for simplicity
 		json.NewEncoder(w).Encode("Gopher Not found")
 		return
 	}
 
-	fmt.Printf("Gopher %s found\n", vars["ID"])
+	log.Info("Gopher %s found", vars["ID"])
 	json.NewEncoder(w).Encode(gopher)
 }
 
@@ -63,9 +65,10 @@ type pass struct {
 
 func (a *api) checkGopher(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	fmt.Printf("Gopher search for %s \n", vars["ID"])
+	log.Printf("Gopher for pswd search for %s", vars["ID"])
 	gopher, err := a.repository.FetchGopherByName(vars["ID"])
 	if err != nil {
+		log.Printf("Gopher %s not found", vars["ID"])
 		w.WriteHeader(http.StatusNotFound) // We use not found for simplicity
 		json.NewEncoder(w).Encode("Gopher Not found")
 		return
@@ -75,19 +78,22 @@ func (a *api) checkGopher(w http.ResponseWriter, r *http.Request) {
 
 	err = decoder.Decode(&input)
 	if err != nil {
+		log.Printf("input body invalid %+v", r.Body)
 		w.WriteHeader(http.StatusBadRequest) // We use not found for simplicity
-		json.NewEncoder(w).Encode("Password not found on input")
+		json.NewEncoder(w).Encode("input not valid")
 		return
 	}
 
-	fmt.Printf("Gopher passtocheck %s \n", input.Password)
+	log.Info("Gopher passtocheck:", input.Password)
 
 	if input.Password != gopher.Password {
+		log.Println("Password missmatch")
 		w.WriteHeader(http.StatusBadRequest) // We use not found for simplicity
 		json.NewEncoder(w).Encode("Password invalid")
 		return
 
 	}
+	log.Println("Password success")
 	r.Body.Close()
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(gopher)

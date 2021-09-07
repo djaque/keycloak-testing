@@ -1,7 +1,5 @@
 package gopher
 
-type Attributes []string
-
 // Gopher defines the properties of a gopher to be listed
 type Gopher struct {
 	ID        string `json:"id"`
@@ -10,9 +8,9 @@ type Gopher struct {
 	LastName  string `json:"lastName,omitempty"`
 	Email     string `json:"email,omitempty"`
 
-	Enabled       string                `json:"enabled,omitempty"`
-	EmailVerified string                `json:"emailVerified,omitempty"`
-	Attributes    map[string]Attributes `json:"attributes,omitempty"`
+	Enabled       string              `json:"enabled,omitempty"`
+	EmailVerified string              `json:"emailVerified,omitempty"`
+	Attributes    map[string][]string `json:"attributes,omitempty"`
 
 	Roles           []string `json:"roles,omitempty"`
 	Groups          []string `json:"groups,omitempty"`

@@ -1,16 +1,16 @@
 package sample
 
 import (
-	gopher "github.com/djaque/compose-keycloak/rest-sample/pkg"
+	gopher "github.com/djaque/keycloak-testing/rest-sample/pkg"
 )
 
 var Gophers = map[string]*gopher.Gopher{
-	"Jenny": &gopher.Gopher{
+	"jenny": &gopher.Gopher{
 		ID:        "01D3XZ3ZHCP3KG9VT4FGAD8KDR",
-		Name:      "Jenny",
+		Name:      "jenny",
 		FirstName: "Jenny",
 		LastName:  "Jenny",
-		Email:     "Jenny@mail.com",
+		Email:     "jenny@mail.com",
 
 		Enabled:       "true",
 		EmailVerified: "true",
@@ -20,12 +20,12 @@ var Gophers = map[string]*gopher.Gopher{
 		RequiredActions: []string{"CONFIGURE_TOTP", "UPDATE_PASSWORD", "UPDATE_PROFILE", "update_user_locale"},
 		Password:        "123456789",
 	},
-	"Billy": &gopher.Gopher{
+	"billy": &gopher.Gopher{
 		ID:              "01D3XZ7CN92AKS9HAPSZ4D5DP9",
 		Name:            "billy",
-		FirstName:       "Billy",
-		LastName:        "Billy",
-		Email:           "Billy@mail.com",
+		FirstName:       "billy",
+		LastName:        "billy",
+		Email:           "billy@mail.com",
 		Enabled:         "true",
 		EmailVerified:   "true",
 		Roles:           []string{"admin"},
@@ -33,12 +33,12 @@ var Gophers = map[string]*gopher.Gopher{
 		RequiredActions: []string{},
 		Password:        "123456789",
 	},
-	"Rainbow": &gopher.Gopher{
+	"rainbow": &gopher.Gopher{
 		ID:              "01D3XZ89NFJZ9QT2DHVD462AC2",
 		Name:            "rainbow",
-		FirstName:       "Rainbow",
-		LastName:        "Rainbow",
-		Email:           "Rainbow@mail.com",
+		FirstName:       "rainbow",
+		LastName:        "rainbow",
+		Email:           "rainbow@mail.com",
 		Enabled:         "true",
 		EmailVerified:   "true",
 		Roles:           []string{"admin"},
@@ -46,17 +46,21 @@ var Gophers = map[string]*gopher.Gopher{
 		RequiredActions: []string{},
 		Password:        "123456789",
 	},
-	"Bjorn": &gopher.Gopher{
+	"bjorn": &gopher.Gopher{
 		ID:              "01D3XZ8JXHTDA6XY05EVJVE9Z2",
 		Name:            "bjorn",
-		FirstName:       "Bjorn",
-		LastName:        "Bjorn",
-		Email:           "Bjorn@mail.com",
+		FirstName:       "bjorn",
+		LastName:        "bjorn",
+		Email:           "bjorn@mail.com",
 		Enabled:         "true",
 		EmailVerified:   "true",
 		Roles:           []string{"admin"},
 		Groups:          []string{"migrated_users"},
 		RequiredActions: []string{},
 		Password:        "123123123",
+		Attributes: map[string][]string{
+			"age":   []string{"18"},
+			"image": []string{"https://golang.org/doc/gopher/ref.png", "https://golang.org/lib/godoc/images/footer-gopher.jpg"},
+		},
 	},
 }
