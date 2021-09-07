@@ -1,1 +1,16 @@
 database/
+**/target/
+/target/
+*/target/*
+.classpath
+.project
+.settings
+.idea
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+*.iml
+*.idea

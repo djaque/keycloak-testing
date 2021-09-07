@@ -14,7 +14,10 @@ services:
       TZ: "America/Santiago"
 
   keycloak:
-    image: jboss/keycloak
+    #image: jboss/keycloak
+    build:
+      context: ./
+      dockerfile: docker/keycloak/Dockerfile
     environment:
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
@@ -30,4 +33,4 @@ services:
     - 8443:8443
     - 9990:9990
     depends_on:
-    - db
+    - postgres
