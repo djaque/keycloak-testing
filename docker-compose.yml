@@ -34,3 +34,10 @@ services:
     - 9990:9990
     depends_on:
     - postgres
+
+  rest-sample:
+    build:
+      context: ./rest-sample/
+      dockerfile: Dockerfile
+    ports:
+    - 8081:8080
