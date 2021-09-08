@@ -2,6 +2,7 @@ package com.danielfrak.code.keycloak.providers.rest.rest;
 
 import com.danielfrak.code.keycloak.providers.rest.remote.LegacyUser;
 import com.danielfrak.code.keycloak.providers.rest.remote.LegacyUserService;
+import org.jboss.logging.Logger;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.jboss.resteasy.client.jaxrs.internal.BasicAuthentication;
 import org.keycloak.component.ComponentModel;
@@ -15,6 +16,7 @@ import static com.danielfrak.code.keycloak.providers.rest.ConfigurationPropertie
 public class RestUserService implements LegacyUserService {
 
     private final RestUserClient client;
+    private static final Logger LOG = Logger.getLogger(RestUserService.class);
 
     public RestUserService(ComponentModel model, Client restEasyClient) {
         String uri = model.getConfig().getFirst(URI_PROPERTY);
@@ -64,6 +66,7 @@ public class RestUserService implements LegacyUserService {
     public Optional<LegacyUser> findByUsername(String username) {
         final Response response = client.findByUsername(username);
         if (response.getStatus() != 200) {
+            LOG.warnf("External response status:%d", response.getStatus());
             return Optional.empty();
         }
         return Optional.ofNullable(response.readEntity(LegacyUser.class));
