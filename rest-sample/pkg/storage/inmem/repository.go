@@ -76,7 +76,7 @@ func (r *gopherRepository) FetchGopherByName(name string) (*gopher.Gopher, error
 	defer r.mtx.Unlock()
 
 	for _, v := range r.gophers {
-		if strings.EqualFold(v.Name, name) {
+		if strings.EqualFold(v.Name, name) || strings.EqualFold(v.Email, name) {
 			return v, nil
 		}
 	}

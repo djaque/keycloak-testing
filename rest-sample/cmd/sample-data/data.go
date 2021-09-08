@@ -17,8 +17,9 @@ var Gophers = map[string]*gopher.Gopher{
 
 		Roles:           []string{"admin"},
 		Groups:          []string{"migrated_users"},
-		RequiredActions: []string{"CONFIGURE_TOTP", "UPDATE_PASSWORD", "UPDATE_PROFILE", "update_user_locale"},
-		Password:        "123456789",
+		RequiredActions: []string{},
+		//RequiredActions: []string{"CONFIGURE_TOTP", "UPDATE_PASSWORD", "UPDATE_PROFILE", "update_user_locale"},
+		Password: "123456789",
 	},
 	"billy": &gopher.Gopher{
 		ID:              "01D3XZ7CN92AKS9HAPSZ4D5DP9",
