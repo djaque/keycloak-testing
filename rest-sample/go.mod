@@ -1,4 +1,4 @@
-module github.com/djaque/keycloak-testing/rest-sample
+module github.mpi-internal.com/Yapo/keycloak-testing/rest-sample
 
 go 1.17
 

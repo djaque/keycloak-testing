@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	gopher "github.com/djaque/keycloak-testing/rest-sample/pkg"
+	gopher "github.mpi-internal.com/Yapo/keycloak-testing/rest-sample/pkg"
 	"github.com/gorilla/mux"
 	log "github.com/sirupsen/logrus"
 

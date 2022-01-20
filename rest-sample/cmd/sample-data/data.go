@@ -1,7 +1,7 @@
 package sample
 
 import (
-	gopher "github.com/djaque/keycloak-testing/rest-sample/pkg"
+	gopher "github.mpi-internal.com/Yapo/keycloak-testing/rest-sample/pkg"
 )
 
 var Gophers = map[string]*gopher.Gopher{
@@ -40,6 +40,19 @@ var Gophers = map[string]*gopher.Gopher{
 		FirstName:       "rainbow",
 		LastName:        "rainbow",
 		Email:           "rainbow@mail.com",
+		Enabled:         "true",
+		EmailVerified:   "true",
+		Roles:           []string{"admin"},
+		Groups:          []string{"migrated_users"},
+		RequiredActions: []string{},
+		Password:        "123456789",
+	},
+	"diego": &gopher.Gopher{
+		ID:              "283920192",
+		Name:            "reiby-viper@hotmail.com",
+		FirstName:       "Diego",
+		LastName:        "Vergara",
+		Email:           "reiby-viper@hotmail.com",
 		Enabled:         "true",
 		EmailVerified:   "true",
 		Roles:           []string{"admin"},
